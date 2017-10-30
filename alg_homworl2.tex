@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{CJKutf8}
+\author{王煜睿\ 2017E8017761112}
+\title{算法设计与分析\ 第二次作业}
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+\maketitle
+
+\clearpage
+\section{Largest Divisible Subset}
+\subsection{The optimal substructure and DP equation}
+\subsection{Pseudo-code}
+\subsection{Prove the correctness}
+\subsection{Complexity of Algorithm}
+
+\clearpage
+\section{Money Robbing}
+	\subsection{The optimal substructure and DP equation}
+	$
+		OPT(i) = max
+		\left\{
+		\begin{aligned}
+		&OPT(i-2) + getMoney(i)  \\
+		&OPT(i-1) \\
+		\end{aligned}
+		\right.
+	$
+
+	\subsection{Pseudo-code}
+	
+		\begin{algorithm}
+			\begin{algorithmic}
+				\STATE $RobingMoney(current\_house)$
+				\IF{$ current\_house >last\_house$}
+					\RETURN $return\ 0;$
+				\ENDIF
+				\STATE $rob \gets RobbingMoney(next\_next\_house) + getMoneys(current\_house)$
+				\STATE	$no\_rob \gets RobbingMoney(next\_house)$
+				\RETURN $max\{no\_rob,rob:no\_rob\}$
+			\end{algorithmic}
+		\end{algorithm}
+		
+	\subsection{Prove the correctness}
+		\quad\quad 对于本问题的解肯定只存在于两种情况之中，本房间被偷与本房间不被偷。假设当前房间被偷时能取得最优解，则最优解可变成除开本房间及两侧房间的剩余房间中取最优解，因此具有最优子结构。
+	\subsection{Complexity of Algorithm}
+		\quad\quad	$O(n)$.
+	\subsection{What if all houses are arranged in a circle?}
+		\quad\quad如果是一个环形，那么我们需要在从递归开始处即第一个开始的房间处标记是否偷了第一个房间，如果偷了，则最后一个房间不能再偷。如果没偷，则最后一个房间可以偷盗。其余同上解。
+		
+\clearpage
+\section{Partition}
+	\subsection{The optimal substructure and DP equation}
+	\quad
+		$
+		OPT(S,i,j) = min 
+		\left\{
+		\begin{aligned}
+		&OPT(S,i-1,i-1) +1; \quad \textbf{if}\ S[i,j]\ is\ palindrome\\
+		&OPT(S,i-1,j)
+		\end{aligned} 	
+		\right. 
+		$
+		
+		\quad
+		S是字符串数组\ ;i,j分别代表当前尚未分割的字符串数组收尾下标
+	\subsection{Pseudo-code}
+	\subsection{Prove the correctness}
+	\subsection{Complexity of Algorithm}
+
+\clearpage
+\section{Decoding}
+\subsection{The optimal substructure and DP equation}
+\subsection{Pseudo-code}
+\subsection{Prove the correctness}
+\subsection{Complexity of Algorithm}
+
+\clearpage
+\section{Longest Consecutive Subsequence}
+\subsection{The optimal substructure and DP equation}
+\subsection{Pseudo-code}
+\subsection{Prove the correctness}
+\subsection{Complexity of Algorithm}
+\end{CJK*}
+\end{document}
